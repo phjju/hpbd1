@@ -1,0 +1,128 @@
+body{
+    background-color: #6d3905;
+}
+.lightrope{
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    margin: -15px 0 0 0;
+    padding: 0;
+    pointer-events: none;
+    width: 100%;
+}
+.lightrope li{
+    position: relative;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 12px;
+    height: 28px;
+    border-radius: 50%;
+    margin: 20px;
+    display: inline-block;
+    background: rgba(237, 243, 48, 1);
+    animation-name: flash-1;
+    animation-duration: 2s;
+}
+.lightrope li:nth-child(2n+1){
+    background:rgba(0, 255, 255, 1);
+    animation-name: flash-2;
+    animation-duration: 0.4s;
+}
+.lightrope li:nth-child(4n+1){
+    background:rgba(247, 0, 148, 1);
+    animation-name: flash-3;
+    animation-duration: 1.1s;
+}
+.lightrope li:nth-child(odd){
+    animation-duration: 1.8s;
+}
+.lightrope li::before{
+    content: "";
+    position: absolute;
+    background: #222;
+    width: 10px;
+    height: 9.33333px;
+    border-radius: 3px;
+    top: 1.7777px;
+    left: 1px;
+}
+.lightrope li::after{
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: 9px;
+    width: 52px;
+    height: 18.999999px;
+    border-bottom: solid #222 2px;
+    border-radius: 50%;
+}
+.lightrope li:last-child::after{
+    content: none;
+}
+.lightrope li:first-child{
+    margin-left: -40px;
+}
+@keyframes flash-1 {
+    0%, 100%{
+        background: rgb(237, 243, 48);
+        box-shadow: 0 4.99999px 24px 3px
+        rgba(237, 243, 48, 1)
+    }
+    50%{
+        background: rgb(237, 243, 48);
+        box-shadow: 0 4.99999px 24px 3px
+        rgba(237, 243, 48, 0.2)
+    }
+}
+@keyframes flash-2 {
+    0%, 100%{
+        background: rgba(0, 255, 255, 1);
+        box-shadow: 0 4.99999px 24px 3px
+        rgba(0, 247, 175, 1)
+    }
+    50%{
+        background: rgba(0, 247, 175, 1);
+        box-shadow: 0 4.99999px 24px 3px
+        rgba(0, 247, 175, 0.2)
+    }
+}
+@keyframes flash-3 {
+    0%, 100%{
+        background: rgba(247, 0, 148, 1);
+        box-shadow: 0 4.99999px 24px 3px
+        rgba(0, 247, 175, 1)
+    }
+    50%{
+        background: rgba(247, 0, 148, 0.4);
+        box-shadow: 0 4.99999px 24px 3px
+        rgba(0, 247, 175, 0.2)
+    }
+}
+span{
+    position: absolute;
+    background: url(../baloon.png);
+    pointer-events: none;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    transform: translate(-50%,-50%);
+    animation: animate 2s linear infinite;
+}
+@keyframes animate {
+    0%{
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%,-1000%);
+        opacity: 0;
+        filter: hue-rotate(720deg);
+    }
+}

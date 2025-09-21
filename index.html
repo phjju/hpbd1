@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style1.css">
+    <link rel="stylesheet" href="./css/style2.css">
+    <link rel="stylesheet" href="css/stylePhaoHoa.css">
+    <script type="text/JavaScript" src="js/phaohoa.js"></script>
+    <link rel="stylesheet" href="css/btnstyle.css">
+    <title>HappybirthDay</title>
+</head>
+<body>
+    <div class="header" style ="display: none; opacity: 0; transition: opacity 2s ease;" id="hd">
+            <ul class="lightrope">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+    </div>
+    <div class="body">
+        <div class="container"> <!-- Thêm một container để căn giữ hình ảnh -->
+            <img id="image" class="falling-image" src="img/banner.png" style ="z-index: 100;" alt="Falling Image">
+        </div>
+        <div class="loadavatar">
+            <img id="imgAvatar" class="falling-image" src="img/h4.jpg" style=" max-width: 15%; left: 10%; margin: 5px; opacity: 0;transform: translateX(-20%);" alt="Falling Image">
+            <img id="imgAvatar1" class="falling-image" src="img/h2.jpg" style=" max-width: 15%; left: 30%;margin: 5px; opacity: 0;" alt="Falling Image">
+            <img id="imgAvatar2" class="falling-image" src="img/h3.jpg" style=" max-width: 15%; left: 50%;margin: 5px; opacity: 0;" alt="Falling Image">
+            <img id="imgAvatar3" class="falling-image" src="img/h5.jpg" style=" max-width: 15%; left: 70%;margin: 5px; opacity: 0;" alt="Falling Image">
+        </div>
+    </div>
+    <div style="position: relative; top: 80%; display: flex; justify-content: center;">
+        <button id="playButton" onclick="playMusic()" style="background-color: #f7950e; margin: 0 auto; z-index: 10000;">Start</button>
+        <button id="NextButton"
+                style="background-color: #f7950e; margin: 0 auto; z-index: 10000; width: 100px; height: 50px;"
+                onclick="window.location.href='./video.html'">
+            2024
+        </button>
+        <button id="Button2025"
+                style="background-color: #f7950e; margin: 0 auto; z-index: 10000; width: 100px; height: 50px;"
+                onclick="window.location.href='./2025.html'">
+            2025
+        </button>
+    </div> 
+    <div style="display: flex; position: relative;justify-content: center;top: 50%; ">
+        <img id="fadeImage" src="img/banh.png" alt="Fading Image" style=" width: 200px;height:200px; " >
+    </div> 
+    <img id="image112" class="bongbaylen" src="img/Balloon-Border.png" alt="Falling1 Image">
+    <h2 id="texthpbd" class="hpbdtext" data-text="&nbsp;Chúc Chị Hiền&nbsp;">&nbsp;Chúc Chị Hiền&nbsp;</h2>
+    <div id="texthpbdEnd" class="hpbdtextEnd">Chúc Mừng Sinh Nhật ᥫ᭡.ᥫ᭡.ᥫ᭡.</div>
+    <!-- <div class="hpbdtext" style="color: #fff;">Chúc mừng sinh nhật</div> -->
+</body>
+<canvas id="canvas" style="display: none; opacity: 0; transition: opacity 2s ease;"></canvas>
+<script>
+    // document.addEventListener('mousemove',function(e){
+    //         var body = document.querySelector('body');
+    //         var balloon = document.createElement("span");
+    //         var x = e.offsetX;
+    //         var y = e.offsetY;
+    //         balloon.style.left = x + 'px';
+    //         balloon.style.top = y + 'px';
+    //         var size = Math.random() * 20;
+    //         balloon.style.width = 10 +size +'px';
+    //         balloon.style.height = 10 + size +'px';
+    //         body.appendChild(balloon);
+    //         setTimeout(function(){
+    //         balloon.remove();
+    //     },1500);
+    //     })
+</script>
+    <!-- Script JavaScript -->
+<script>
+        // Lấy đối tượng của nút bằng ID
+    var playButton = document.getElementById('playButton');
+    var nextButton = document.getElementById('NextButton');
+    var button2025 = document.getElementById('Button2025');
+    nextButton.style.display = "none";
+    button2025.style.display = "none";
+        // Thêm class 'hidden' để ẩn nút
+    function playMusic() {
+        playButton.style.display = "none";
+        // Tạo một đối tượng âm thanh mới
+        var audio = new Audio('nhac/hbd.mp3');
+        // Phát nhạc
+    // Sự kiện khi kết thúc bài hát
+    audio.play();
+    audio.addEventListener('ended', function() {
+            // Đặt timeout để phát lại bài hát sau 3 giây
+            setTimeout(function() {
+                audio.play();
+            }, 2000);
+        });
+    }
+    var image = document.getElementById('image');
+    var hpbdText = document.getElementById('texthpbd');
+    var hpbdtextEnd = document.getElementById('texthpbdEnd');
+    var imgAvatar = document.getElementById('imgAvatar');
+    var imgAvatar1 = document.getElementById('imgAvatar1');
+    var imgAvatar2 = document.getElementById('imgAvatar2');
+    var imgAvatar3 = document.getElementById('imgAvatar3');
+    var fadeImage = document.getElementById('fadeImage');
+    var canvass = document.getElementById('canvas');
+    var hd = document.getElementById('hd');
+
+    // Gán sự kiện onclick thứ nhất
+    playButton.addEventListener('click', function() {
+        hd.style.display = 'block';
+        canvass.style.display = 'block';
+        setTimeout(function() {
+            // Hiển thị ảnh dần dần
+            hd.style.opacity = '1';
+            canvass.style.opacity = '1';
+        }, 2000);
+        
+         // Di chuyển hình ảnh xuống dưới
+         setTimeout(function() {
+            image.style.top = '100px'; // Đặt vị trí 200px từ trên xuống
+        }, 100);
+
+        // Lắc lư hình ảnh
+        setTimeout(function() {
+            image.style.transform = 'rotate(5deg)'; // Lắc lư với góc 5 độ
+        }, 2100);
+
+        setTimeout(function() {
+            image.style.transform = 'rotate(-5deg)';// Lắc lư với góc -5 độ
+            
+        }, 2400);
+
+        setTimeout(function() {
+            image.style.transform = 'rotate(0deg)'; // Đứng yên
+        }, 2700);
+
+        setTimeout(function() {
+            Playbalon();
+        }, 5000); 
+   
+        setTimeout(function() {
+            fadeImage.style.opacity = '1'; // Hiển thị ảnh dần dần
+        }, 9000);
+        setTimeout(function(){
+            fadeImage.style.opacity = '0';
+        },12000)
+        setTimeout(function() {
+            imgAvatar.style.top = '300px';
+            imgAvatar1.style.top = '300px';
+            imgAvatar.style.opacity = '1';
+            imgAvatar.className = 'imgAvatar1';
+            imgAvatar1.className = 'imgAvatar1';
+            imgAvatar1.style.opacity = '1';
+            imgAvatar2.style.top = '300px';
+            imgAvatar3.style.top = '300px';
+            imgAvatar2.style.opacity = '1';
+            imgAvatar2.className = 'imgAvatar1';
+            imgAvatar3.className = 'imgAvatar1';
+            imgAvatar3.style.opacity = '1';
+
+        }, 15000);
+        setTimeout(function() {
+            imgAvatar.className = 'imgAvatar1';
+            imgAvatar1.className = 'imgAvatar1';
+
+            imgAvatar2.className = 'imgAvatar1';
+            imgAvatar3.className = 'imgAvatar1';
+
+            hpbdText.style.display = 'block';
+        }, 18000);
+        setTimeout(function() {
+            hpbdText.setAttribute('data-text', 'Sinh nhật vui vẻ');
+            hpbdText.innerText = 'Sinh nhật vui vẻ'; 
+        }, 26000);
+        setTimeout(function() {
+            hpbdText.setAttribute('data-text', 'Luôn Luôn tươi trẻ');
+            hpbdText.innerText = 'Luôn Luôn tươi trẻ'; 
+        }, 34000);
+        setTimeout(function() {
+            hpbdText.setAttribute('data-text', 'Ăn Ngon Mạnh Khỏe ');
+            hpbdText.innerText = 'Ăn Ngon Mạnh Khỏe '; 
+        }, 42000);
+        // setTimeout(function() {
+        //     hpbdText.setAttribute('data-text', 'Chúc Mừng Sinh Nhật ᥫ᭡.ᥫ᭡.ᥫ᭡.');
+        //     hpbdText.innerText = 'Chúc Mừng Sinh Nhật ᥫ᭡.ᥫ᭡.ᥫ᭡.'; 
+        // }, 58000);
+        setTimeout(function() {
+            hpbdText.style.display = 'none';
+            hpbdtextEnd.style.opacity = '1'; 
+        }, 50000);
+
+        setTimeout(function() {
+            nextButton.style.display = "block";
+            button2025.style.display = "block";
+        }, 53000);
+
+       
+    });
+
+var image1 =  document.getElementById('image112');
+function Playbalon(){
+        image1.style.display = 'block'; 
+        setTimeout(function() {
+            image1.style.top = '100px';
+        }, 4000);
+}
+</script>
+</html>

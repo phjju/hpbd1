@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Display</title>
+    <style>
+        body {
+            background-image: url("./img/background.jpg") ;
+            background-repeat: no-repeat;
+            background-origin: content-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        .video-container {
+            
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #ff5733;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #c70039;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container" style="flex: 2;">
+        <div class="controls" id = "top" style="padding-bottom: 10px;">
+            <img style="width: 20%;" src="./img/Cat_dance.gif" alt="My cool gif">
+            <img style="width: 20%;" src="./img/Cat_dance.gif" alt="My cool gif">
+            <img style="width: 20%;" src="./img/Cat_dance.gif" alt="My cool gif">
+            <img style="width: 20%;" src="./img/Cat_dance.gif" alt="My cool gif">
+            <img style="width: 20%;" src="./img/Cat_dance.gif" alt="My cool gif">
+            
+        </div>
+       
+        <video id="video" controls>
+                <!--<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1011118327?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Happy Birthday"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>-->
+                <source src="https://www.dropbox.com/scl/fi/5twet57sjufs2t39j8f14/Happy-Birthday.mp4?rlkey=qixl4zflo8k321a4z7pde3413&st=c2glq68y&raw=1" type="video/mp4"> 
+                Your browser does not support the video tag.
+            </video>
+            
+            <div class="zzz" id ="xxx" style="z-index: 1000; position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: auto;
+            margin: 0;
+        ">
+                <button id="playPauseBtn" style="position: relative; top: 50%; left: 50%; transform: translateX(-50%);margin: 0;">Play</button>
+            </div>
+            
+            
+        <div class="controls" id="bottom">
+            
+            <button id="muteBtn" style="display: none;">Mute</button>
+            <img style="width: 20%;" src="./img/Cat_dance.gif" alt="My cool gif">
+            <img style="width: 20%;" src="./img/Cat_dance.gif" alt="My cool gif">
+            <img style="width: 20%;" src="./img/Cat_dance.gif" alt="My cool gif">
+            <img style="width: 20%;" src="./img/Cat_dance.gif" alt="My cool gif">
+            <img style="width: 20%;" src="./img/Cat_dance.gif" alt="My cool gif">
+           
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('video');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const xxx = document.getElementById('xxx');
+            const muteBtn = document.getElementById('muteBtn');
+            const bot = document.getElementById('bottom');
+            const top = document.getElementById('top');
+            bot.style.display = "none";
+            top.style.display = "none";
+            // Tạo hàm xử lý phát/tạm dừng video
+            function togglePlayPause() {
+                if (video.paused) {
+                    video.play();
+                    playPauseBtn.textContent = 'Pause';
+                    playPauseBtn.style.display = "none";
+                    bot.style.display = "flex";
+                    top.style.display = "flex";
+                } else {
+                    video.pause();
+                    playPauseBtn.textContent = 'Play';
+                }
+            }
+              // Thêm sự kiện click cho video
+            video.addEventListener('click', togglePlayPause);
+            playPauseBtn.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                    playPauseBtn.textContent = 'Pause';
+                    playPauseBtn.style.display = "none";
+                    xxx.style.display = "none";
+                    bot.style.display = "flex";
+                    top.style.display = "flex";
+                } else {
+                    video.pause();
+                    playPauseBtn.textContent = 'Play';
+                }
+            });
+
+            muteBtn.addEventListener('click', function() {
+                video.muted = !video.muted;
+                muteBtn.textContent = video.muted ? 'Unmute' : 'Mute';
+            });
+        });
+        
+    </script>
+</body>
+</html>

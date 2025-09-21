@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body{
+
+    background: #000000;
+    height: 100vh;
+}
+span{
+    position: absolute;
+    background: url(../heart1.png);
+    pointer-events: none;
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+    transform: translate(-50%,-50%);
+    animation: animate 2s linear infinite;
+}
+@keyframes animate {
+    0%{
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%,-1000%);
+        opacity: 0;
+        filter: hue-rotate(720deg);
+    }
+}
+
+
+.container {
+    position: relative; /* Đặt vị trí tương đối để hình ảnh có thể được căn chỉnh bên trong */
+    display: flex; /* Sử dụng flexbox để căn chỉnh trung tâm */
+    justify-content: center; /* Căn giữ theo chiều ngang */
+}
+/* CSS cho hình ảnh */
+.falling-image {
+    position: absolute;
+    top: -200px; /* Đặt vị trí bắt đầu từ trên cùng */
+    transition: top 2s, transform 1s; /* Sử dụng transition để tạo hiệu ứng rơi và lắc lư chậm hơn */
+    max-width: 100%;
+    transform-origin: bottom center; 
+    /* animation: sway 2s infinite alternate; */
+    animation: sway linear 6s;
+    animation-duration: 6s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: sway;
+    animation-timeline: auto;
+    animation-range-start: normal;
+    animation-range-end: normal;
+    
+}
+.imgAvatar1 {
+    position: absolute;
+    width: 200px; /* Thay đổi kích thước ảnh tùy ý */
+    height: auto;
+    animation: shakeHorizontal 2s infinite alternate;
+    border-radius: 20px;
+    border: 2px solid white;
+}
+
+@keyframes shakeHorizontal {
+    0% {
+        transform: rotate(-5deg); } /* Góc nghiêng bắt đầu */
+    50% {
+        transform: rotate(5deg); } /* Góc nghiêng cao nhất */
+    100% {
+         transform: rotate(0deg); }
+}
+
+
+@keyframes sway {
+    
+    0% {
+        transform: rotate(-5deg); } /* Góc nghiêng bắt đầu */
+    50% {
+        transform: rotate(5deg); } /* Góc nghiêng cao nhất */
+    100% {
+         transform: rotate(0deg); } /* Góc nghiêng kết thúc */
+}
+.bongbaylen {
+    position: absolute;
+    top: 100%; /* Bóng bắt đầu từ dưới cùng của màn hình */
+    left: 50%; /* Căn giữa theo chiều ngang */
+    transform: translateX(-50%);
+    max-width: 100%;
+    transform-origin: bottom center;
+    animation: balloon-up 10s ease forwards; /* Sử dụng animation để bóng bay lên */
+    display: none; /* Ẩn bóng ban đầu */
+    z-index: 10000;
+    }
+#fadeImage, #imgAvatar, #imgAvatar1, #imgAvatar2,#imgAvatar3{
+    opacity: 0; /* Ẩn ảnh ban đầu */
+    transition: opacity 2s ease; /* Áp dụng hiệu ứng chuyển đổi với thời gian 2 giây */
+}
+
+@keyframes balloon-up {
+    0% {
+        top: 100%; /* Bóng bắt đầu từ dưới cùng của màn hình */
+    }
+    100% {
+        top: -500px;
+}}
+#playButton{
+    width: 100px;
+    height: 50px;
+}
+.hpbdtext, .hpbdtextEnd{
+    height: 50px;
+    font-size: 20px;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+.hpbdtextEnd{
+    display: block;
+    color: #e07777;
+    opacity: 0;
+    transition: opacity 2s ease;
+    white-space: nowrap;
+    filter: drop-shadow(0 0 20px #e07777) drop-shadow(0 0 50px #e07777);
+}
+h2{
+    position: relative;
+    font-size: 6em;
+    color: #000;
+}
+h2::before{
+    content: attr(data-text);
+    position: absolute;
+    color: #e07777;
+    /* width: 100px; */
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid #e07777;
+    animation: animate 8s linear infinite;
+    filter: drop-shadow(0 0 20px #e07777) drop-shadow(0 0 50px #e07777);
+}
+
+
+@keyframes animate {
+    0%,10%,100%{
+        width: 0;
+    }
+    70%,90%{
+        width: 100%;
+    }
+}
